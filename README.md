@@ -16,6 +16,14 @@ I used Docker Compose to launch two container one for database and other for dev
 
 ## Configuring the initial centOS image
 
+First of all get your root terminal.Then pull images
+
+```shell
+docker pull centOS:latest
+docker pull mysql:latest
+```
+
+
 After pulling centOS latest image we have to install listed software using yum install
 1. openjdk-1.8 (this will install jre)
 2. default-jdk (this will install jdk)
@@ -55,7 +63,14 @@ public class MysqlCon{
                 try{
                         Class.forName("com.mysql.cj.jdbc.Driver");
                         Connection con=DriverManager.getConnection("jdbc:mysql://dbos:3306/mydb","aftab","ubuntu");
-                        //here sonoo is database name, root is username and password  
+                        //here mydb is database name, root is username and password  
+                        
+                        //your code goes here
+                        
+                        /*
+                         *Sample Code
+                         *
+                         *
                         Statement stmt=con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
                         ResultSet rs=stmt.executeQuery("select * from employee");
                         rs.first();
@@ -63,6 +78,7 @@ public class MysqlCon{
                         while(rs.next()){
                                 System.out.println(rs.getInt(1) + "\t" + rs.getString(2));
                         }
+                        */
 
                         con.close();
                 }catch(Exception e){ System.out.println(e);}
@@ -70,6 +86,42 @@ public class MysqlCon{
 }
 
 ```
+
+Before you uncomment and rum this code for testing make sure table is there in database otherwise you will get SQLException.
+To make things easier for the user let's create a shell script which copy the pre created template to the dir where the docker volume is mounted with the name passed as an argument  and open it up for editing
+
+```shell
+cp /root/MysqlCon.java /home/program/$1;
+cd /home/program;
+vim /home/program/$1;
+```
+
+We can make an alias do make things more convinient
+
+Again do,
+
+```shell
+cd ~
+vim .bashrc
+```
+
+### Append .bashrc file
+
+```bash
+alias jtemp=". /yourscriptname.sh"
+```
+
+Now Everthing is done. Launch containers by docker compose file provided is this repo.
+
+Go to the same dir where docker-compose.yml file is andd do
+
+```shell
+docker-compose up
+```
+
+Your both container will be launch.
+
+
 
 
 
