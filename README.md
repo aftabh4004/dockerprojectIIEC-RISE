@@ -32,6 +32,9 @@ unzip mysql-connector-java-8.0.20.zip
 
 Inside the unzip dir you will have mysql-connector.
 
+Go to home dir , .bashrc file is there
+
+
 ```shell
 cd ~
 vim .bashrc
@@ -42,6 +45,34 @@ vim .bashrc
 ```bash
 export CLASSPATH=path/to/mysql-connector
 ```
+Now, Create a simple Template in java language which open up for the user which do initial steps on Database connectivity
+
+```java
+import java.sql.*;
+public class MysqlCon{
+        //change the class name same as your file name
+        public static void main(String args[]){
+                try{
+                        Class.forName("com.mysql.cj.jdbc.Driver");
+                        Connection con=DriverManager.getConnection("jdbc:mysql://dbos:3306/mydb","aftab","ubuntu");
+                        //here sonoo is database name, root is username and password  
+                        Statement stmt=con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
+                        ResultSet rs=stmt.executeQuery("select * from employee");
+                        rs.first();
+                        System.out.println("ID\tName");
+                        while(rs.next()){
+                                System.out.println(rs.getInt(1) + "\t" + rs.getString(2));
+                        }
+
+                        con.close();
+                }catch(Exception e){ System.out.println(e);}
+        }
+}
+
+```
+
+
+
 
 
 
