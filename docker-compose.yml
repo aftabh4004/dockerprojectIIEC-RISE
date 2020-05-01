@@ -1,0 +1,30 @@
+version: '3.3'
+
+services:
+        dbos:
+                image: mysql:latest
+                volumes:
+                        - sql_stg:/var/lib/mysql
+                restart: always
+                environment:
+                        MYSQL_ROOT_PASSWORD: rootpass
+                        MYSQL_USER: aftab
+                        MYSQL_PASSWORD: ubuntu
+                        MYSQL_DATABASE: mydb
+
+
+        javatemplateos:
+                image: centjava:v11
+                volumes:
+                        - java_stg:/home/program
+                restart: always
+                stdin_open: true
+                tty: true
+                depends_on:
+                        - dbos
+
+volumes:
+    java_stg:
+    sql_stg:
+
+           
