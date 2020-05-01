@@ -11,22 +11,23 @@ I used Docker Compose to launch two container one for database and other for dev
 
 ## Initial image used
 [mysql:latest](https://hub.docker.com/_/mysql)
+
 [centOS:latest](https://hub.docker.com/_/centos)
 
 ## Configuring the initial centOS image
 
 After pulling centOS latest image we have to install listed software using yum install
-..1. openjdk-1.8 (this will install jre)
-..2. default-jdk (this will install jdk)
-..3. vim
-..4. unzip
-..Download which is mandatory for doing Java Database connectivity.
-..Go to root and type
+1. openjdk-1.8 (this will install jre)
+2. default-jdk (this will install jdk)
+3. vim
+4. unzip
+Download which is mandatory for doing Java Database connectivity.
+Go to root and type
 ..shell script
 wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-8.0.20.zip
 unzip mysql-connector-java-8.0.20.zip
 ..
-..Inaide the unzip dir you have mysql-connector.
+Inside the unzip dir you have mysql-connector.
 ### Append .bashrc file
 ... 
 
