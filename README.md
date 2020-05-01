@@ -21,7 +21,8 @@ After pulling centOS latest image we have to install listed software using yum i
 2. default-jdk (this will install jdk)
 3. vim
 4. unzip
-Download which is mandatory for doing Java Database connectivity.
+
+Download mysql-connector which is mandatory for doing Java Database connectivity.
 Go to root and type
 
 ```shell
@@ -30,5 +31,17 @@ unzip mysql-connector-java-8.0.20.zip
 ```
 
 Inside the unzip dir you will have mysql-connector.
+
+```shell
+cd ~
+vim .bashrc
+```
+
 ### Append .bashrc file
+
+```bash
+export CLASSPATH=path/to/mysql-connector
+```
+
+
 
