@@ -113,13 +113,41 @@ alias jtemp=". /yourscriptname.sh"
 
 Now Everthing is done. Launch containers by docker compose file provided is this repo.
 
-Go to the same dir where docker-compose.yml file is andd do
+Go to the same dir where docker-compose.yml file is and do
 
 ```shell
 docker-compose up
 ```
 
 Your both container will be launch.
+
+## How to use
+
+As soon as your caontainer launch it start showing logs, 
+Now open another root terminal and do 
+
+```shell
+docker ps -a
+```
+
+Notedown the initial two or four character of container ID of the container named desktop_javatemplateos...
+Attach it to get its bash terminal
+
+```shell
+docker attach [INITIAL CONTAINER ID]
+```
+
+Now to get the Template,
+
+```shell
+jtemp myfile.java
+```
+Give your file name in place of myfile.java
+
+vim editor will be open , edit the code accrodingly.
+
+
+##Thank you
 
 
 
