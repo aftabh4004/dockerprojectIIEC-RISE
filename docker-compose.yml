@@ -14,7 +14,7 @@ services:
 
 
         javatemplateos:
-                image: centjava:v11
+                image: aftabh4004/centjava:v2
                 volumes:
                         - java_stg:/home/program
                 restart: always
